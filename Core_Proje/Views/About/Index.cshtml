@@ -1,0 +1,55 @@
+﻿@model EntityLayer.Concrete.About
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+
+@using (Html.BeginForm("Index", "About", FormMethod.Post))
+{
+    <div class="col-md-8 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Hakkımda Güncelleme Paneli</h4>
+                <form class="forms-sample" method="post">
+                    @Html.HiddenFor(x => x.AboutID)
+                    <div class="form-group">
+                        <label class="form-control-label" for="input-username">Başlık</label>
+                        @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="input-first-name">Yaş</label>
+                        @Html.TextBoxFor(x => x.Age, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="input-first-name">Mail Adresi</label>
+                        @Html.TextBoxFor(x => x.Mail, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="input-first-name">Yaş</label>
+                        @Html.TextBoxFor(x => x.Age, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="input-first-name">Telefon Numarası</label>
+                        @Html.TextBoxFor(x => x.Phone, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="input-first-name">Adres</label>
+                        @Html.TextBoxFor(x => x.Address, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="input-first-name">Fotoğraf</label>
+                        @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="input-first-name">Hakkımda</label>
+                        @Html.TextAreaFor(x => x.Description,7,4, new { @class = "form-control" })
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Güncelle</button>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+
+

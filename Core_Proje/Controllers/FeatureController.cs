@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BusinessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
+using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +11,22 @@ namespace Core_Proje.Controllers
 {
     public class FeatureController : Controller
     {
-        public IActionResult Index()
+        FeatureManager featureManager = new FeatureManager(new EfFeatureDal());
+        [HttpGet]
+        public IActionResult Index(int id)
         {
-            return View();
+            ViewBag.v1 = "Öne Çıkanlar Düzenle";
+            ViewBag.v2 = "Öne Çıkanlar";
+            ViewBag.v3 = "Öne Çıkanlar Düzenle";
+            var values = featureManager.TGetByID(1);
+            return View(values);
+        }
+
+        [HttpPost]
+        public IActionResult Index(Feature feature)
+        {
+            featureManager.TUpdate(feature);
+            return RedirectToAction("Index","Default");
         }
     }
 }

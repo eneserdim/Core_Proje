@@ -1,0 +1,45 @@
+﻿@model EntityLayer.Concrete.Customers
+@{
+    ViewData["Title"] = "AddCustomer";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<div class="col-md-8 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Cari Ekleme Paneli</h4>
+            <form class="forms-sample" method="post">
+                <div class="form-group">
+                    <label for="exampleInputUsername1">Ad Soyad</label>
+                    <input type="text" class="form-control" name="AdSoyad">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Telefon Numarası</label>
+                    <input type="text" class="form-control" name="Telefon">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Verilen Hizmet</label>
+                    <input type="text" class="form-control" name="VerilenHizmet">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Anlaşılan Ücret</label>
+                    <input type="text" class="form-control" name="AnlaşılanÜcret">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Hizmet Maliyeti</label>
+                    <input type="text" class="form-control" name="Maliyet">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Tarih</label>
+                    <input type="date" class="form-control" name="Tarih">
+                </div>
+                <div class="form-group">
+                    <label for="exampleTextarea1">Açıklama</label>
+                    <textarea class="form-control" name="Açıklama" rows="6"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Ekle</button>
+            </form>
+        </div>
+    </div>
+</div>
+

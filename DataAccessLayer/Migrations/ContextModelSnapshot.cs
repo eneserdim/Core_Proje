@@ -29,8 +29,8 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Age")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -74,6 +74,39 @@ namespace DataAccessLayer.Migrations
                     b.HasKey("ContactID");
 
                     b.ToTable("Contacts");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.Customers", b =>
+                {
+                    b.Property<int>("CariID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AdSoyad")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("AnlaşılanÜcret")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Açıklama")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Maliyet")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("Tarih")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Telefon")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VerilenHizmet")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CariID");
+
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Experience", b =>
@@ -164,8 +197,17 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Platform")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PlatformUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ProjectUrl")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
 
                     b.HasKey("PortfolioID");
 
@@ -254,6 +296,102 @@ namespace DataAccessLayer.Migrations
                     b.HasKey("TestimonialID");
 
                     b.ToTable("Testimonials");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.ToDoList", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("ToDoLists");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.User", b =>
+                {
+                    b.Property<int>("UserID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ImageURL")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Mail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserSurname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserID");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.UserMessage", b =>
+                {
+                    b.Property<int>("MessageID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
+                    b.HasKey("MessageID");
+
+                    b.HasIndex("UserID");
+
+                    b.ToTable("UserMessages");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.UserMessage", b =>
+                {
+                    b.HasOne("EntityLayer.Concrete.User", "User")
+                        .WithMany("UserMessages")
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.User", b =>
+                {
+                    b.Navigation("UserMessages");
                 });
 #pragma warning restore 612, 618
         }

@@ -15,6 +15,9 @@ namespace Core_Proje.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.v1 = "Yetenek Listesi";
+            ViewBag.v2 = "Yetenekler";
+            ViewBag.v3 = "Yetenek Listesi";
             var values = skillManager.TGetList();
             return View(values);
         }
@@ -22,13 +25,41 @@ namespace Core_Proje.Controllers
         [HttpGet]
         public IActionResult AddSkill()
         {
+            ViewBag.v1 = "Yetenek Ekle";
+            ViewBag.v2 = "Yetenekler";
+            ViewBag.v3 = "Yetenek Ekle";
             return View();
         }
 
         [HttpPost]
         public IActionResult AddSkill(Skill skill)
         {
+
             skillManager.TAdd(skill);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult DeleteSkill(int id)
+        {
+            var values = skillManager.TGetByID(id);
+            skillManager.TDelete(values);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult EditSkill(int id)
+        {
+            ViewBag.v1 = "Yetenek Güncelle";
+            ViewBag.v2 = "Yetenekler";
+            ViewBag.v3 = "Yetenek Güncelle";
+            var values = skillManager.TGetByID(id);
+            return View(values);
+        }
+
+        [HttpPost]
+        public IActionResult EditSkill(Skill skill)
+        {
+            skillManager.TUpdate(skill);
             return RedirectToAction("Index");
         }
     }

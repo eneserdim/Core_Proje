@@ -18,7 +18,7 @@ namespace BusinessLayer.Concrete
             _featureDal = featureDal;
         }
 
-        public Feature GetByID(int id)
+        public Feature TGetByID(int id)
         {
             return _featureDal.GetByID(id);
         }
@@ -41,6 +41,11 @@ namespace BusinessLayer.Concrete
         public void TUpdate(Feature t)
         {
             _featureDal.Update(t);
+        }
+
+        public Feature GetByID(int id)
+        {
+            return _featureDal.GetByID(id);
         }
     }
 }

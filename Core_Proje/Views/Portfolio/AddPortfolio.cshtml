@@ -1,0 +1,46 @@
+﻿@model EntityLayer.Concrete.Portfolio
+@{
+    ViewData["Title"] = "AddPortfolio";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<div class="col-md-8 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Proje Ekleme Paneli</h4>
+            <form class="forms-sample" method="post">
+                @if (Model != null)
+                {
+                    <input type="hidden" name="Status" value="true">
+                }
+                <div class="form-group">
+                    <label for="exampleInputUsername1">Proje Başlığı</label>
+                    <input type="text" class="form-control" name="Name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Proje Görsel 1</label>
+                    <input type="text" class="form-control" name="ImageUrl">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Proje Görsel 2</label>
+                    <input type="text" class="form-control" name="ImageUrl2">
+                </div>
+                <div class="form-group">
+                    <label for="exampleTextarea1">Proje Url</label>
+                    <input type="text" class="form-control" name="ProjectUrl">
+                </div>
+                <div class="form-group">
+                    <label for="exampleTextarea1">Platform</label>
+                    <input type="text" class="form-control" name="Platform">
+                </div>
+                <div class="form-group">
+                    <label for="exampleTextarea1">Platform Url</label>
+                    <input type="text" class="form-control" name="PlatformUrl">
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Ekle</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+

@@ -10,7 +10,7 @@
             @foreach (var item in Model)
             {
                 <div class="grid-item">
-                    <a href="#">
+                    <a href="https://@item.ProjectUrl">
                         <figure class="portfolio-item">
                             <img src="@Url.Content(item.ImageUrl)" data-bp="@Url.Content(item.ImageUrl2)" />
                             <figcaption>
